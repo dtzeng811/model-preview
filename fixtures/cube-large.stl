@@ -1,0 +1,86 @@
+solid cube-large
+facet normal 0 0 1
+outer loop
+vertex -75 -75 75
+vertex 75 -75 75
+vertex 75 75 75
+endloop
+endfacet
+facet normal 0 0 1
+outer loop
+vertex -75 -75 75
+vertex 75 75 75
+vertex -75 75 75
+endloop
+endfacet
+facet normal 0 0 -1
+outer loop
+vertex 75 -75 -75
+vertex -75 -75 -75
+vertex -75 75 -75
+endloop
+endfacet
+facet normal 0 0 -1
+outer loop
+vertex 75 -75 -75
+vertex -75 75 -75
+vertex 75 75 -75
+endloop
+endfacet
+facet normal 1 0 0
+outer loop
+vertex 75 -75 75
+vertex 75 -75 -75
+vertex 75 75 -75
+endloop
+endfacet
+facet normal 1 0 0
+outer loop
+vertex 75 -75 75
+vertex 75 75 -75
+vertex 75 75 75
+endloop
+endfacet
+facet normal -1 0 0
+outer loop
+vertex -75 -75 -75
+vertex -75 -75 75
+vertex -75 75 75
+endloop
+endfacet
+facet normal -1 0 0
+outer loop
+vertex -75 -75 -75
+vertex -75 75 75
+vertex -75 75 -75
+endloop
+endfacet
+facet normal 0 1 0
+outer loop
+vertex -75 75 75
+vertex 75 75 75
+vertex 75 75 -75
+endloop
+endfacet
+facet normal 0 1 0
+outer loop
+vertex -75 75 75
+vertex 75 75 -75
+vertex -75 75 -75
+endloop
+endfacet
+facet normal 0 -1 0
+outer loop
+vertex -75 -75 -75
+vertex 75 -75 -75
+vertex 75 -75 75
+endloop
+endfacet
+facet normal 0 -1 0
+outer loop
+vertex -75 -75 -75
+vertex 75 -75 75
+vertex -75 -75 75
+endloop
+endfacet
+endsolid cube-large

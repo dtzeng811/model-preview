@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>model-preview · 3D 模型预览图生成</title>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand">model-preview</span>
+    <span class="api">POST /render</span>
+  </div>
+</nav>
+<main class="wrap">
+  <header class="hero">
+    <h1>把 3D 模型变成<span class="spectrum-text">四视图</span>预览</h1>
+    <p class="lead">拖入 glb / gltf / obj / stl / ply（多文件打包 zip），自动输出正面、背面、左侧、右侧四张展示级预览图。</p>
+  </header>
+
+  <div class="main-grid">
+    <section class="viewer-card" id="viewerCard" aria-label="3D 查看器">
+      <div id="viewport"></div>
+      <div class="meta" id="meta" hidden></div>
+      <div class="viewer-hint">拖拽旋转 · 滚轮缩放 · 拖入文件替换模型</div>
+      <div class="drop-overlay">松开以加载模型</div>
+    </section>
+
+    <aside class="panel">
+      <h2>渲染参数</h2>
+      <div class="field">
+        <span class="label">输出角度</span>
+        <div class="views-fixed">正面 · 背面 · 左侧 · 右侧<span>固定四视图</span></div>
+      </div>
+      <div class="field">
+        <label class="label" for="sizeSel">输出尺寸</label>
+        <select id="sizeSel">
+          <option value="512">512 × 512</option>
+          <option value="1024" selected>1024 × 1024</option>
+          <option value="2048">2048 × 2048</option>
+        </select>
+      </div>
+      <div class="field">
+        <span class="label">背景</span>
+        <div class="row">
+          <div class="seg" id="bgSeg">
+            <button type="button" class="on" data-bg="transparent">透明</button>
+            <button type="button" data-bg="color">纯色</button>
+          </div>
+          <input type="color" id="bgColor" value="#ffffff" disabled aria-label="背景色">
+        </div>
+      </div>
+      <div class="field">
+        <span class="label">格式</span>
+        <div class="seg" id="fmtSeg">
+          <button type="button" class="on" data-f="png">PNG</button>
+          <button type="button" data-f="webp">WebP</button>
+        </div>
+      </div>
+      <button type="button" class="text-button" id="pickBtn">选择模型文件…</button>
+      <input type="file" id="fileInput" accept=".glb,.gltf,.obj,.stl,.ply,.zip" hidden>
+      <button type="button" class="button-primary" id="renderBtn">渲染出图</button>
+      <p class="render-hint">以查看器当前朝向为正面出四视图</p>
+    </aside>
+  </div>
+
+  <section class="results" id="results" hidden aria-label="渲染结果">
+    <div class="results-head">
+      <span class="stats" id="stats"></span>
+    </div>
+    <p class="order-hint">拖拽卡片可调整顺序 —— 拼图与打包都按此顺序输出</p>
+    <div class="grid" id="grid"></div>
+
+    <div class="sheet-block">
+      <h2>拼图预览</h2>
+      <p class="order-hint">四视图按当前顺序拼成一张 2×2 大图</p>
+      <div class="sheet-preview"><canvas id="sheetCanvas"></canvas></div>
+      <div class="sheet-actions">
+        <button type="button" class="button-ghost" id="zipBtn">打包下载 zip</button>
+        <button type="button" class="button-primary" id="sheetBtn">下载拼图</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="./main.ts"></script>
+</body>
+</html>
