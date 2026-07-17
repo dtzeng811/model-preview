@@ -4,6 +4,12 @@
 
 两种用法：`POST /render` 供程序调用；内置 Web 页面供人工出图与演示。服务本身不存任何东西——不落库、不留历史、不做鉴权，请求结束即清空临时目录。渲染在常驻的无头 Chrome 页面池里跑 three.js，**查看器所见即服务端所出**（前后端共用同一套场景模块）。
 
+![页面](screenshots/page.png)
+
+拖入模型 → 在查看器里转到你要的正面 → 渲染出图。结果卡片可拖拽排序，2×2 拼图预览跟着实时刷新：
+
+![结果与拼图预览](screenshots/results.png)
+
 ## 快速开始
 
 ```bash
@@ -114,3 +120,7 @@ npm run typecheck  # tsc --noEmit（strict）
 - 归一化顺序：先按最大边缩放到 2 个世界单位，**再重算包围盒居中**。先减原 center 再缩放会留下 `(s-1)·center` 的偏移。毫米制模型（如 150mm STL）不缩放会超出相机 far 平面渲染成空白。
 - 内嵌预览环境里 `clientWidth` 可能报 0，resize 逻辑需防御（`clientWidth || fallback` + ResizeObserver）。
 - 页面级故障只补一个新页面，绝不重启浏览器（会误杀其它在途渲染）；浏览器断开才整体重启，且带互斥——两个页面同时失败只 launch 一次。
+
+## License
+
+Apache License 2.0，见 [LICENSE](LICENSE)。

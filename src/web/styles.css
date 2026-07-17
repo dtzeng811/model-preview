@@ -159,7 +159,10 @@ input[type="color"]:disabled { opacity: .35; }
 .results-head { display: flex; align-items: center; gap: 10px; }
 .stats { flex: 1; font-size: 14px; color: var(--steel); }
 .order-hint { font-size: 13px; color: var(--steel); margin: 8px 0 14px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+/* auto-fit 而非 auto-fill：最多只有四视图，auto-fill 会按 minmax 硬凑出多余空列
+   （1272px 下算出 6 列），四张卡片挤在左侧、右边留死区。auto-fit 折叠空轨道，
+   让实际卡片按 1fr 铺满整行。 */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 .shot {
   background: var(--canvas); border: 1px solid var(--line); border-radius: 16px;
   overflow: hidden; box-shadow: var(--shadow-low);
